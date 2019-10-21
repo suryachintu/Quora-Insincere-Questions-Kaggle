@@ -1,5 +1,10 @@
+# theme: jekyll-theme-minimal
+# name: Predicting Insincere Questions on Quora
+# title: null
+# logo: https://pmcvariety.files.wordpress.com/2014/10/quora_logo.jpg?w=986&h=555&crop=1
+# show_downloads: false
+title: Minimal theme
+description: Minimal is a theme for GitHub Pages.
+show_downloads: true
+google_analytics:
 theme: jekyll-theme-minimal
-name: Predicting Insincere Questions on Quora
-title: null
-logo: https://pmcvariety.files.wordpress.com/2014/10/quora_logo.jpg?w=986&h=555&crop=1
-show_downloads: false
