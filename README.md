@@ -35,6 +35,10 @@ F1-Score = 2 x (precision x recall) / (precision + recall)
 <b>Recall</b>: The recall is the ratio tp / (tp + fn) where tp is the number of true positives and fn the number of false negatives. The recall is intuitively the ability of the classifier to find all the positive samples.
 
 ### 3. Basic EDA and Data Preprocessing
+
+You can find the notebook [here](notebooks/QuoraInsincereQuestions-EDA.ipynb) for more detailed analysis. 
+
+
 ```python
 # load the dataset
 train_df = pd.read_csv('train.csv')
@@ -136,6 +140,8 @@ Looks like this feature is not much useful.
 Similarly we can find many other features like Country Count, Sentence Count, Word Count, Stop Word Count, Punctuation count, Average word length and code for all these feature is available in this [notebook](notebooks/QuoraInsincereQuestions-EDA.ipynb) but none of these features found helpful.
 
 #### 3.c Text Preprocessing
+
+You can find the notebook [here](notebooks/QuoraInsincereQuestions-Text-Preprocessing.ipynb)
 
 We will be using [GloVe](https://nlp.stanford.edu/projects/glove/) for obtaining vector representation of a word as this is useful for our Deep learning model which will be covered at the end.
 
@@ -272,12 +278,14 @@ Glove : <br/>
 Found embeddings for 69.57% of vocab<br/>
 Found embeddings for  99.58% of all text<br/>
 
-Now the code coverage is increased from 33% to 69.57% and covers 99.58% of all text. So removing punctuations, lower casing and expanding contractions increased vocab coverage.
+Now the vocab coverage is increased from 33% to 69.57% and covers 99.58% of all text. So removing punctuations, lower casing and expanding contractions increased vocab coverage.
 
 We can further increase the coverage by corecting the spellings as there are lot of spelling mistakes in question text. You can find detailed code on this [notebook](notebooks/QuoraInsincereQuestions-Text-Preprocessing.ipynb)   
 
 
 ### 4. Base Line Model
+
+You can find the notebook [here](notebooks/QuoraInsincereQuestions-ML-Models.ipynb)
 
 We will be using Naive Bayes as our base line model with TFIDF vectorized words as Naive Bayes works pretty fast and can be used as base line model for many projects.
 
@@ -311,7 +319,9 @@ By using Naive Bayes Classifier we are able to get 0.583 F1-score on our test se
 
 ### 5. Deep Learning Model
 
-We will be using Bidirectional LSTM with a [Attention Layer]() folowed by a dense layer of 64 units and another dense layer of 32 units with [elu](https://ml-cheatsheet.readthedocs.io/en/latest/activation_functions.html#elu) activation function for our model. Attention Layer is based on the Dzmitry Bahdanau research paper https://arxiv.org/pdf/1409.0473.pdf and custom keras implementation is taken from kaggle kernel https://www.kaggle.com/qqgeogor/keras-lstm-attention-glove840b-lb-0-043 and detailed explaination will be found in this [notebook](notebooks/AttentionLayerDemo.ipynb), in this notebook there is a detailed explanation of input shapes and output shapes at of each operation used for the implmentation.
+You can find the notebook [here](notebooks/Quora-LSTM.ipynb)
+
+We will be using Bidirectional LSTM with a [Attention Layer]() folowed by a dense layer of 64 units and another dense layer of 32 units with [elu](https://ml-cheatsheet.readthedocs.io/en/latest/activation_functions.html#elu) activation function for our model. Attention Layer is based on the Dzmitry Bahdanau research paper https://arxiv.org/pdf/1409.0473.pdf and custom keras implementation is taken from kaggle kernel https://www.kaggle.com/qqgeogor/keras-lstm-attention-glove840b-lb-0-043 and detailed explaination will be found in this [notebook](notebooks/AttentionLayerDemo.ipynb), in this notebook there is a detailed explanation of input shapes and output shapes at of each operation used for the implementation.
 
 ```python
 model = Sequential()
